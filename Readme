@@ -1,0 +1,281 @@
+🏥 Medical Data History – SQL Project
+
+📌 Project Overview
+
+This project is a SQL-based medical data analysis project using a medical data history database.
+
+The project contains 34 SQL queries designed to explore patient information, admissions, doctors, diagnoses, allergies, demographics, and basic health-related calculations.
+
+The main database used in the queries is:
+
+use project_medical_data_history;
+
+🎯 Project Objectives
+
+The objectives of this project are to:
+
+Retrieve and filter patient information
+
+Analyze patient demographics such as gender, city, province, and birth year
+
+Work with patient allergies and missing values
+
+Analyze hospital admissions and diagnoses
+
+Connect patients with province and doctor information using JOIN
+
+Identify repeated admissions for the same diagnosis
+
+Calculate patient counts and grouped statistics
+
+Use string functions to format patient names
+
+Perform basic health calculations such as BMI-based obesity classification
+
+Practice SQL aggregation, filtering, grouping, sorting, and set operations
+
+🗂️ Database Tables Used
+
+The SQL queries reference the following tables:
+
+Table
+
+Purpose
+
+patients
+
+Contains patient demographic and health-related information
+
+admissions
+
+Contains patient admission, discharge, attending doctor, and diagnosis information
+
+doctors
+
+Contains doctor information including name and specialty
+
+province_names
+
+Contains province IDs and full province names
+
+🛠️ SQL Concepts Covered
+
+This project demonstrates practical use of:
+
+SELECT
+
+WHERE
+
+IS NULL / IS NOT NULL
+
+LIKE
+
+BETWEEN
+
+IN
+
+DISTINCT
+
+ORDER BY
+
+GROUP BY
+
+HAVING
+
+COUNT()
+
+SUM()
+
+MAX() / MIN()
+
+CONCAT()
+
+UPPER() / LOWER()
+
+LENGTH()
+
+YEAR()
+
+DAY()
+
+FLOOR()
+
+POWER()
+
+CASE
+
+JOIN
+
+UNION ALL
+
+Aggregate functions
+
+Conditional aggregation
+
+📊 Analysis Performed
+
+Patient Analysis
+
+Examples include:
+
+Finding male patients
+
+Finding patients without recorded allergies
+
+Searching patients by first-name patterns
+
+Filtering patients by weight and height
+
+Finding the patient with the greatest height
+
+Counting patients born in 2010
+
+Finding unique cities and birth years
+
+Identifying first names that occur only once
+
+Admission Analysis
+
+The project also analyzes:
+
+Total number of admissions
+
+Same-day admission and discharge records
+
+Admissions for a specific patient
+
+Patients repeatedly admitted for the same diagnosis
+
+Number of admissions by day of the month
+
+Patients with specific diagnoses
+
+Doctor & Province Analysis
+
+The project uses joins to:
+
+Match patients with their province names
+
+Match patients with attending doctors
+
+Find patients with a particular diagnosis and doctor
+
+Display patient and doctor records together using UNION ALL
+
+Health Calculation
+
+The project includes an obesity classification using:
+
+BMI = weight (kg) / height (m)²
+
+A patient is classified as obese when BMI is 30 or greater:
+
+CASE
+    WHEN (weight / POWER(height / 100.0, 2)) >= 30
+    THEN 1
+    ELSE 0
+END AS isObese
+
+🔍 Example SQL Query
+
+Example: finding patients diagnosed with Dementia:
+
+SELECT p.patient_id, p.first_name, p.last_name
+FROM patients p
+JOIN admissions a
+    ON p.patient_id = a.patient_id
+WHERE a.diagnosis = 'Dementia';
+
+⚠️ Note on UPDATE Permission
+
+One query attempts to replace missing allergy values with NKA:
+
+UPDATE patients
+SET allergies = 'NKA'
+WHERE allergies IS NULL;
+
+The project documentation records that this query was correct but could not be executed because the database user had UPDATE permission denied / read-only access.
+
+📁 Project Files
+
+sql-project/
+│
+├── project medical data history 1.sql
+├── use project.docx
+└── README.md
+
+🚀 How to Run the Project
+
+1. Clone the repository
+
+git clone YOUR_GITHUB_REPOSITORY_URL
+
+2. Open the SQL file
+
+Open:
+
+project medical data history 1.sql
+
+in a MySQL-compatible SQL environment.
+
+3. Select the database
+
+Run:
+
+USE project_medical_data_history;
+
+4. Execute the queries
+
+Run the queries individually to explore the patient, admission, doctor, and province data.
+
+📚 Query Coverage
+
+The project includes 34 practice/analysis questions, progressing from basic filtering and sorting to:
+
+Multi-table joins
+
+Aggregation
+
+Conditional aggregation
+
+String manipulation
+
+Date functions
+
+Grouping and HAVING
+
+UNION ALL
+
+Calculated fields
+
+BMI/obesity classification
+
+💡 Key Learning Outcomes
+
+Through this project, I practiced:
+
+Writing SQL queries for real-world medical datasets
+
+Filtering and sorting structured data
+
+Handling NULL values
+
+Performing aggregate calculations
+
+Grouping and summarizing data
+
+Joining multiple tables
+
+Creating calculated columns using CASE
+
+Using date and string functions
+
+Solving business-style data analysis questions
+
+Organizing SQL work into a GitHub portfolio project
+
+👤 Author
+
+Sridhar
+
+This project was created as part of SQL and data analytics project.
